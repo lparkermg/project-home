@@ -44,7 +44,7 @@ namespace magi_calc
 
         private static float CalculateChargeRate()
         {
-            return _mP*_lvl/_m;
+            return _mP*_lvl;
         }
 
         private static float CalculateChargeTime(float chargeRate)
@@ -65,18 +65,18 @@ namespace magi_calc
         private static void DispertionSim()
         {
             var file = AppDomain.CurrentDomain.BaseDirectory + "\\dispertion.txt";
-            //Create/Open file then loop through untill the charge rate <= to 0.
+            //Create/Open file then loop through untill the charge rate <= to 0.05.
             using (var fs = new FileStream(file, FileMode.Create, FileAccess.Write, FileShare.Write))
             {
                 using (var sw = new StreamWriter(fs))
                 {
-                    //Set to 0.1 so we dont hit weird stuff at 0.0f
-                    while (_chg >= 0.1f)
+                    //Set to 0.05 so we dont hit weird stuff at 0.0f
+                    sw.Write("{\"Dispertion Rate\" : \"Current Charge\"}");
+                    while (_chg >= 0.05f)
                     {
                         _dspR = CalculateDispertionRate();
                         _chg = ApplyDispertion(_dspR);
-                        Console.WriteLine($"{_dspR}, {_chg}.");
-                        sw.Write($"{_dspR}, {_chg}, ");
+                        sw.Write($"{{{_dspR} : {_chg}}},");
                     }
                     sw.Flush();
                 }
