@@ -32,13 +32,15 @@ namespace magi_calc
 
             //Calculate and display charge time.
             var chargeTime = CalculateChargeTime(chargeRate);
-            Console.WriteLine($"Charge Time: {chargeTime}");
+            Console.WriteLine($"Charge Time: {chargeTime}\n");
 
             //Set charge to max.
             _chg = 5.0f;
             
-            //Calculate and display Impact Absorbtion and Resonence Radius.
-            Console.WriteLine(GetImapctAndResonenceFromCharge(_chg));
+            //Calculate and display Impact Absorbtion and Resonence on incrementing absorbtion rates up to 5.
+            for(var i = 1;i <= 5;i++)
+                Console.WriteLine(GetImapctAndResonenceFromCharge(_chg,(float)i));
+
             //Do Dispertion stuff.
             Console.WriteLine("Simulating and Saving Dispertion.");
             DispertionSim();
@@ -67,9 +69,9 @@ namespace magi_calc
             return _chg - dispertion;
         }
 
-        private static string GetImapctAndResonenceFromCharge(float charge)
+        private static string GetImapctAndResonenceFromCharge(float charge,float absorbtion)
         {
-            var imp = charge/IMPACT_DIVIDER;
+            var imp = charge - absorbtion;
             var rr = charge - imp;
 
             return $"Impact Absorbtion: {imp}\nMax Resonence Radius: {rr}";
