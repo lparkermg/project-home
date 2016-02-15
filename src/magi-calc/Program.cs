@@ -10,14 +10,16 @@ namespace magi_calc
 {
     class Program
     {
-        private static float _m = 10.0f;
-        private static float _dspR; //Dispertion Rate.
+        //Constants through the entire sim.
+        private const float IMPACT_DIVIDER = 4.0f;
+        private const float MAGICAL_POTENCY = 1.0f;
+        private const float MULTIPLIER = 10.0f;
+        private const float LEVEL = 1.0f;
 
-        private static float _mP = 1.0f; //Magic Potency
-        private static float _lvl = 1.0f; //Current Level
+        //Changable variables
+        private static float _dspR; //Dispertion Rate.
         private static float _chg; //Current Charge amount.
 
-        private const float IMPACT_DIVIDER = 4.0f;
 
         static void Main(string[] args)
         {
@@ -47,7 +49,7 @@ namespace magi_calc
 
         private static float CalculateChargeRate()
         {
-            return _mP*_lvl;
+            return MAGICAL_POTENCY*LEVEL;
         }
 
         private static float CalculateChargeTime(float chargeRate)
@@ -57,7 +59,7 @@ namespace magi_calc
 
         private static float CalculateDispertionRate()
         {
-            return ((_chg*_mP)*_lvl)/_m;
+            return ((_chg*MAGICAL_POTENCY)*LEVEL)/MULTIPLIER;
         }
 
         private static float ApplyDispertion(float dispertion)
