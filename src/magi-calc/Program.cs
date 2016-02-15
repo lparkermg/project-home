@@ -14,7 +14,7 @@ namespace magi_calc
         private const float IMPACT_DIVIDER = 4.0f;
         private const float MAGICAL_POTENCY = 1.0f;
         private const float MULTIPLIER = 10.0f;
-        private const float LEVEL = 5.0f;
+        private const float LEVEL = 1.0f;
 
         //Changable variables
         private static float _dspR; //Dispertion Rate.
