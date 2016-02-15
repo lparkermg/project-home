@@ -17,6 +17,8 @@ namespace magi_calc
         private static float _lvl = 1.0f; //Current Level
         private static float _chg; //Current Charge amount.
 
+        private const float IMPACT_DIVIDER = 4.0f;
+
         static void Main(string[] args)
         {
             Console.WriteLine("Magi Calc:");
@@ -33,7 +35,8 @@ namespace magi_calc
             //Set charge to max.
             _chg = 5.0f;
             
-
+            //Calculate and display Impact Absorbtion and Resonence Radius.
+            Console.WriteLine(GetImapctAndResonenceFromCharge(_chg));
             //Do Dispertion stuff.
             Console.WriteLine("Simulating and Saving Dispertion.");
             DispertionSim();
@@ -60,6 +63,14 @@ namespace magi_calc
         private static float ApplyDispertion(float dispertion)
         {
             return _chg - dispertion;
+        }
+
+        private static string GetImapctAndResonenceFromCharge(float charge)
+        {
+            var imp = charge/IMPACT_DIVIDER;
+            var rr = charge - imp;
+
+            return $"Impact Absorbtion: {imp}\nMax Resonence Radius: {rr}";
         }
 
         private static void DispertionSim()
