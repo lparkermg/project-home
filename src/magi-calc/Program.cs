@@ -23,6 +23,7 @@ namespace magi_calc
 
         static void Main(string[] args)
         {
+            //TODO: May need to change the lot to fit more with the actual objects and code for the game.
             Console.WriteLine("Magi Calc:");
             Console.WriteLine("Magic calculation system for Project Home.\n");
 
@@ -38,7 +39,7 @@ namespace magi_calc
             _chg = 5.0f;
             
             //Calculate and display Impact Absorbtion and Resonence on incrementing absorbtion rates up to 5.
-            for(var i = 1;i <= 5;i++)
+            for(var i = 0;i <= 5;i++)
                 Console.WriteLine(GetImapctAndResonenceFromCharge(_chg,(float)i));
 
             //Do Dispertion stuff.
