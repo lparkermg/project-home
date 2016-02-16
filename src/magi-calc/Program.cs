@@ -53,7 +53,7 @@ namespace magi_calc
 
         private static float CalculateChargeRate()
         {
-            return MAGICAL_POTENCY*LEVEL;
+            return MAGICAL_POTENCY*LEVEL/(MAX_CHARGE/2.0f);
         }
 
         private static float CalculateChargeTime(float chargeRate)
