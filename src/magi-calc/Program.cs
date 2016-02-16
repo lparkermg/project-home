@@ -15,6 +15,7 @@ namespace magi_calc
         private const float MAGICAL_POTENCY = 1.0f;
         private const float MULTIPLIER = 10.0f;
         private const float LEVEL = 1.0f;
+        private const float MAX_CHARGE = 5.0f;
 
         //Changable variables
         private static float _dspR; //Dispertion Rate.
@@ -36,7 +37,7 @@ namespace magi_calc
             Console.WriteLine($"Charge Time: {chargeTime}\n");
 
             //Set charge to max.
-            _chg = 5.0f;
+            _chg = MAX_CHARGE;
             
             //Calculate and display Impact Absorbtion and Resonence on incrementing absorbtion rates up to 5.
             for(var i = 0;i <= 5;i++)
@@ -57,7 +58,7 @@ namespace magi_calc
 
         private static float CalculateChargeTime(float chargeRate)
         {
-            return 5.0f/chargeRate;
+            return MAX_CHARGE/chargeRate;
         }
 
         private static float CalculateDispertionRate()
